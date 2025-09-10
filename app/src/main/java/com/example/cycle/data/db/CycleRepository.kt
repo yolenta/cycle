@@ -21,7 +21,7 @@ data class  Summary(
     val fertileEnd: LocalDate?
 )
 
-class  CycleRepository(private  val dao: PeriodDayDao){
+class CycleRepository(private  val dao: PeriodDayDao){
 
     fun observeAllDays(): Flow<List<PeriodDay>> = dao.observeALL()
 

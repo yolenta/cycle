@@ -1,11 +1,13 @@
 package com.example.cycle.data.db
 
+import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
 import kotlinx.coroutines.flow.Flow
 import java.time.LocalDate
 
-interface PeriodDayDao {
+@Dao
+interface PeriodDayDao{
     @Upsert suspend fun upsert(day: PeriodDay)
     @Query("DELETE FROM period_day WHERE date= :date") suspend fun deleteByDate(date: LocalDate)
     @Query("SELECT * FROM period_day ORDER BY date ASC") fun observeALL(): Flow<List<PeriodDay>>
